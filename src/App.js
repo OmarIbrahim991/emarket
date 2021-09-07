@@ -38,9 +38,9 @@ const App = () => {
 		return <h1>Error occured!</h1>
 	}
 	return (
-		<div className="container">
+		<main className="container">
 			<ProductsList products={state.products} />
-		</div>
+		</main>
 	)
 }
 

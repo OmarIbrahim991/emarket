@@ -11,6 +11,14 @@ code {
 		monospace;
 }
 
+svg {
+	cursor: pointer;
+}
+
+svg:hover {
+	color: blue;
+}
+
 .container {
 	text-align: center;
 }
@@ -24,6 +32,10 @@ code {
 
 .product {
 	width: 20vw;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 	border: 5px solid black;
 	border-radius: 0.5em;
 	margin: 1em 0;
@@ -37,4 +49,37 @@ code {
 	border-radius: 0.5em;
 	box-shadow: 0.3em 0.6em 1em 0.2em gray;
 	margin-bottom: 1em;
+}
+
+.product-footer {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	align-self: stretch;
+}
+
+.product-counter {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 30px;
+}
+
+.input-counter {
+	width: 80%;
+	text-align: center;
+	margin: 0.5em;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

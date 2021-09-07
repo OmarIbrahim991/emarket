@@ -4,7 +4,6 @@ import { setLoadingState, setErrorState, loadInitialData } from '../actions'
 const API_BASE_URL = "https://fakestoreapi.com"
 
 const useFetch = ({ endpoints, resources, dispatch, }) => {
-
     useEffect(() => {
         (async () => {
             try {
