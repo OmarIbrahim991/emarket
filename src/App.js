@@ -1,34 +1,20 @@
-import { useReducer } from 'react'
+import { useReducer, useState, useEffect } from 'react'
+import { Container, Tab, Nav } from 'react-bootstrap'
+import { reducer, initialState, StateContext } from './state'
 import useFetch from './hooks/useFetch'
-import { LOAD_INITIAL_DATA, SET_LOADING_STATE,SET_ERROR_STATE } from './actions'
 import ProductsList from './components/ProductsList'
-
-const initialState = { products: [], categories: [], cart: [], loading: false, error: false }
-
-const reducer = (state=initialState, action={ type: "NOOP" }) => {
-	switch (action.type) {
-		case LOAD_INITIAL_DATA:
-			const { products, categories, cart, } = action.payload
-			return { ...state, products, categories, cart, }
-		case SET_LOADING_STATE:
-			const { loading } = action.payload
-			return { ...state, loading, }
-		case SET_ERROR_STATE:
-			const { error } = action.payload
-			return { ...state, error, }
-		default:
-			return state
-	}
-}
 
 const App = () => {
 	const [state, dispatch] = useReducer(reducer, initialState)
+	const [display, setDisplay] = useState("all")
 
 	useFetch({
 		endpoints: ["/products", "/products/categories",],
 		resources: ["products", "categories"],
 		dispatch,
 	})
+
+	useEffect(() => setDisplay("all"), [])
 
 	if (state.loading) {
 		return <h1>Loading...</h1>
@@ -38,9 +24,24 @@ const App = () => {
 		return <h1>Error occured!</h1>
 	}
 	return (
-		<main className="container">
-			<ProductsList products={state.products} />
-		</main>
+		<StateContext.Provider value={{ state, dispatch }}>
+			<Container className="container">
+				<Tab.Container>
+					<Nav variant="tabs" onSelect={setDisplay} id="nav-bar">
+						<Nav.Link eventKey="all" active={display === "all"}>All Products</Nav.Link>
+						<Nav.Link eventKey="electronics">Electronics</Nav.Link>
+						<Nav.Link eventKey="jewelery">Jewelery</Nav.Link>
+						<Nav.Link eventKey="men's clothing">Men's Clothing</Nav.Link>
+						<Nav.Link eventKey="women's clothing">Women's Clothing</Nav.Link>
+					</Nav>
+					<Tab.Content>
+						<Tab.Pane eventKey={display} active>
+							<ProductsList category={display} />
+						</Tab.Pane>
+					</Tab.Content>
+				</Tab.Container>
+			</Container>
+		</StateContext.Provider>
 	)
 }
 

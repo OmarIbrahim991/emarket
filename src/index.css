@@ -13,21 +13,24 @@ code {
 
 svg {
 	cursor: pointer;
+	padding: 4px;
 }
 
-svg:hover {
-	color: blue;
+.reversable:hover {
+	color: white;
+	background-color: rgb(33, 37, 41);
 }
 
 .container {
 	text-align: center;
+	margin: auto;
 }
 
 .products-container {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-around;
-	margin: 1em 2em;
+	justify-content: center;
+	margin: 1em auto;
 }
 
 .product {
@@ -38,7 +41,7 @@ svg:hover {
 	align-items: center;
 	border: 5px solid black;
 	border-radius: 0.5em;
-	margin: 1em 0;
+	margin: 1em 0.5em;
 	padding: 1em;
 }
 
@@ -63,7 +66,7 @@ svg:hover {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	max-width: 30px;
+	max-width: 100px;
 }
 
 .input-counter {
@@ -82,4 +85,8 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+#nav-bar {
+	cursor: pointer;
 }
