@@ -11,8 +11,7 @@ const Header = () => {
         <Container as="header" fluid>
 			<Row className="main-header">
 				<Col><h1>E-Market</h1></Col>
-				<Col xl={6} lg={5} md={4} sm={2}></Col>
-				<Col className="right">
+				<Col>
 					<Row>
 						<Col className="right">
 							<FaShoppingCart size={35} style={{ margin: "0.3em 0 0"}} />
@@ -28,7 +27,7 @@ const Header = () => {
 								<Dropdown.Toggle variant="dark">
 									<FaListUl size={30} />
 								</Dropdown.Toggle>
-								<Dropdown.Menu variant="dark">
+								<Dropdown.Menu variant="dark" align="end">
 									<Dropdown.Item href="#/action-1">Cart</Dropdown.Item>
 									<Dropdown.Item href="#/action-2">My Orders</Dropdown.Item>
 									<Dropdown.Item href="#/action-2">My Favorites</Dropdown.Item>

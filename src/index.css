@@ -35,13 +35,14 @@ svg {
 
 .product {
 	width: 20vw;
+	min-width: 15rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
 	border: 5px solid black;
 	border-radius: 0.5em;
-	margin: 1em 0.5em;
+	margin: 0.5em 0.5em;
 	padding: 1em;
 }
 
