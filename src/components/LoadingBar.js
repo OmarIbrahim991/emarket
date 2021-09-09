@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ProgressBar } from 'react-bootstrap'
 
-const LoadingBar = () => {
+const LoadingBar = (props) => {
     const [progress, setProgress] = useState(0)
 
     useEffect(() => {
@@ -9,7 +9,7 @@ const LoadingBar = () => {
     }, [])
 
     return (
-        <ProgressBar variant="danger" now={progress} style={{ width: "100%", height: 3, }} />
+        <ProgressBar variant="danger" now={progress} style={{ width: "100%", height: 3, }} {...props} />
     )
 }
 
