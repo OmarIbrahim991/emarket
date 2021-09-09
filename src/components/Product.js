@@ -37,7 +37,7 @@ const Product = ({ id }) => {
             <Card.Footer className="product-footer">
                 <Card.Text style={{ margin: "1em 0" }}>{price}$</Card.Text>
 
-                {liked ? <FaHeart size={35} color="red" onClick={toggleLike} /> : <FaRegHeart size={30} color="red" onClick={toggleLike} />}
+                {liked ? <FaHeart size={35} color="red" onClick={toggleLike} /> : <FaRegHeart size={30} onClick={toggleLike} />}
 
                 {
                     inCart === 0 ?

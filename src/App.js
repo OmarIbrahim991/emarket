@@ -3,6 +3,7 @@ import { Container, Tab, Nav } from 'react-bootstrap'
 import { reducer, initialState, StateContext } from './state'
 import useFetch from './hooks/useFetch'
 import ProductsList from './components/ProductsList'
+import LoadingBar from './components/LoadingBar'
 
 const App = () => {
 	const [state, dispatch] = useReducer(reducer, initialState)
@@ -16,15 +17,12 @@ const App = () => {
 
 	useEffect(() => setDisplay("all"), [])
 
-	if (state.loading) {
-		return <h1>Loading...</h1>
-	}
-
 	if (state.error) {
 		return <h1>Error occured!</h1>
 	}
 	return (
 		<StateContext.Provider value={{ state, dispatch }}>
+			{state.loading && <LoadingBar />}
 			<Container className="container">
 				<Tab.Container>
 					<Nav variant="tabs" onSelect={setDisplay} id="nav-bar">

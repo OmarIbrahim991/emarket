@@ -10,7 +10,7 @@ const ProductsList = ({ category }) => {
             return products
         }
         return products.filter(p => p.category === category)
-    }, [category])
+    }, [category, state.products])
 
     return (
         <section className="products-container">
