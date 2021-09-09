@@ -4,6 +4,7 @@ import { reducer, initialState, StateContext } from './state'
 import useFetch from './hooks/useFetch'
 import LoadingBar from './components/LoadingBar'
 import Home from './components/Home'
+import Header from './components/Header'
 
 const App = () => {
 	const [state, dispatch] = useReducer(reducer, initialState)
@@ -20,6 +21,7 @@ const App = () => {
 
 	return (
 		<StateContext.Provider value={{ state, dispatch }}>
+			<Header />
 			{state.loading && <LoadingBar />}
 			<BrowserRouter>
 				<Switch>

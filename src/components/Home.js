@@ -6,7 +6,7 @@ const Home = () => {
 	const [selected, setSelected] = useState("all")
 
     return (
-        <Container className="container">
+        <Container>
             <Tab.Container>
                 <Nav variant="tabs" onSelect={setSelected} id="nav-bar">
                     <Nav.Link eventKey="all" active={selected === "all"}>All Products</Nav.Link>
