@@ -11,7 +11,7 @@ export const setLoadingState = (loadingState) => ({
 
 export const setErrorState = (errorState) => ({
     type: SET_ERROR_STATE,
-    payload: { loading: errorState, },
+    payload: { error: errorState, },
 })
 
 export const loadInitialData = ({ products=[], categories=[], cart=[], }) => ({

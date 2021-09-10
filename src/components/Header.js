@@ -37,8 +37,6 @@ const Header = () => {
 							</Dropdown>
 						</Col>
 					</Row>
-
-
 				</Col>
 			</Row>
 		</Container>

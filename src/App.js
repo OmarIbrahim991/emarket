@@ -5,6 +5,8 @@ import useFetch from './hooks/useFetch'
 import LoadingBar from './components/LoadingBar'
 import Home from './components/Home'
 import Header from './components/Header'
+import Footer from './components/Footer'
+import Error from './components/Error'
 
 const App = () => {
 	const [state, dispatch] = useReducer(reducer, initialState)
@@ -16,13 +18,13 @@ const App = () => {
 	})
 
 	if (state.error) {
-		return <h1>Error occured!</h1>
+		return <Error />
 	}
 
 	return (
 		<StateContext.Provider value={{ state, dispatch }}>
 			<Header />
-			{state.loading && <LoadingBar />}
+			<LoadingBar loading={state.loading} />
 			<BrowserRouter>
 				<Switch>
 					<Route exact path="/">
@@ -30,6 +32,7 @@ const App = () => {
 					</Route>
 				</Switch>
 			</BrowserRouter>
+			<Footer />
 		</StateContext.Provider>
 	)
 }

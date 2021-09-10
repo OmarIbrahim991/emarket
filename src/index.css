@@ -92,7 +92,7 @@ input[type=number] {
 	cursor: pointer;
 }
 
-.main-header {
+.main-header, .main-footer {
 	background-color: rgb(33, 37, 41);
 	color: white;
 	align-items: center;
