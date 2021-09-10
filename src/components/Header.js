@@ -14,7 +14,7 @@ const Header = () => {
 				<Col>
 					<Row>
 						<Col className="right">
-							<FaShoppingCart size={35} style={{ margin: "0.3em 0 0"}} />
+							<FaShoppingCart size={35} className="clickable" style={{ margin: "0.3em 0 0"}} />
 							{
 								inCart > 0 &&
 								<Badge text="main" bg="danger" pill style={{ position: 'relative', top: -10, left: -15, bordeRadius: "50%" }}>

@@ -37,16 +37,18 @@ const Product = ({ id }) => {
             <Card.Footer className="product-footer">
                 <Card.Text style={{ margin: "1em 0" }}>{price}$</Card.Text>
 
-                {liked ? <FaHeart size={35} color="red" onClick={toggleLike} /> : <FaRegHeart size={30} onClick={toggleLike} />}
+                <span className="clickable" style={{ padding: 0 }}>
+                    {liked ? <FaHeart size={35} color="red" onClick={toggleLike} /> : <FaRegHeart size={30} onClick={toggleLike} />}
+                </span>
 
                 {
                     inCart === 0 ?
-                        <FaCartPlus size={40} onClick={increment} className="reversable" />
+                        <FaCartPlus size={40} onClick={increment} className="reversable clickable" />
                     :
                         <div className="product-counter">
-                            <FaArrowUp onClick={increment} size={25} className="reversable" />
+                            <FaArrowUp onClick={increment} size={25} className="reversable clickable" />
                             <Form.Control type="number" className="input-counter" onChange={handleChange} value={inCart} />
-                            <FaArrowDown onClick={decrement} size={25} className="reversable" />
+                            <FaArrowDown onClick={decrement} size={25} className="reversable clickable" />
                         </div>
                 }
             </Card.Footer>

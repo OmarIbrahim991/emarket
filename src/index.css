@@ -12,8 +12,11 @@ code {
 }
 
 svg {
-	cursor: pointer;
 	padding: 4px;
+}
+
+.clickable {
+	cursor: pointer;
 }
 
 .reversable:hover {
