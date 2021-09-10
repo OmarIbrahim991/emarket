@@ -1,4 +1,5 @@
 import { useContext, useMemo } from 'react'
+import { Spinner } from 'react-bootstrap'
 import { StateContext } from '../state'
 import Product from './Product'
 
@@ -15,9 +16,12 @@ const ProductsList = ({ category }) => {
     return (
         <section className="products-container">
             {
-                products.map((product) => (
-                    <Product key={product.id} {...product} />
-                ))
+                products.length > 0 ?
+                    products.map((product) => (
+                        <Product key={product.id} {...product} />
+                    ))
+                :
+                    <Spinner animation="border" variant="dark" style={{ marginTop: "10%" }} />
             }
         </section>
     )

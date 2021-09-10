@@ -33,7 +33,9 @@ svg {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
+	align-content: flex-start;
 	margin: 1em auto;
+	min-height: 75vh;
 }
 
 .product {

@@ -3,10 +3,9 @@ import { FaRegCopyright } from 'react-icons/fa'
 
 const Footer = () => {
     return(
-        <Container as="footer" className="main-footer" fluid>
-            <h6 style={{ textAlign: "center" }}>
-                <FaRegCopyright size={25} /> {new Date().getFullYear()}
-            </h6>
+        <Container as="footer" className="main-footer" style={{ textAlign: "center" }} fluid>
+            <FaRegCopyright size={25} />
+            {new Date().getFullYear()}
         </Container>
     )
 }
