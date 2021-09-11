@@ -14,12 +14,11 @@ export const setErrorState = (errorState) => ({
     payload: { error: errorState, },
 })
 
-export const loadInitialData = ({ products=[], categories=[], cart=[], }) => ({
+export const loadInitialData = ({ products=[], categories=[], }) => ({
     type: LOAD_INITIAL_DATA,
     payload: {
         products,
         categories,
-        cart,
     }
 })
 

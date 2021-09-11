@@ -6,7 +6,7 @@ import { addToCart, toggleLikeProduct } from '../actions'
 
 const Product = ({ id }) => {
     const { state, dispatch } = useContext(StateContext)
-    const index = useMemo(() => state.products.findIndex(p => p.id === id), [id])
+    const index = useMemo(() => state.products.findIndex(p => p.id === id), [id, state.products])
     const { title, image, price, liked, category, description, rating } = state.products[index]
     const [inCart, setInCart] = useState(state.cart[id] ? state.cart[id] : 0)
 
@@ -24,7 +24,7 @@ const Product = ({ id }) => {
 
     useEffect(() => {
         dispatch(addToCart({ id, count: inCart }))
-    }, [inCart])
+    }, [inCart, id, dispatch])
 
 
     return (

@@ -9,8 +9,8 @@ export const initialState = { products: [], categories: [], cart: {}, loading: f
 export const reducer = (state=initialState, action={ type: "NOOP", payload: {} }) => {
 	switch (action.type) {
 		case LOAD_INITIAL_DATA:
-			const { products, categories, cart, } = action.payload
-			return { ...state, products, categories, cart, }
+			const { products, categories, } = action.payload
+			return { ...state, products, categories, }
 		case SET_LOADING_STATE:
 			const { loading } = action.payload
 			return { ...state, loading, }

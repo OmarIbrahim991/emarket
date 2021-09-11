@@ -6,7 +6,7 @@ import Product from './Product'
 const ProductsList = ({ category }) => {
     const { state } = useContext(StateContext)
     const products = useMemo(() => {
-        const { products } = state
+        const products = state.products
         if (category === "all") {
             return products
         }
