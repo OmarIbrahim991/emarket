@@ -12,12 +12,6 @@ import Error from './components/Error'
 const App = () => {
 	const [state, dispatch] = useReducer(reducer, initialState)
 
-	// useFetch({
-	// 	endpoints: ["/products", "/products/categories",],
-	// 	resources: ["products", "categories"],
-	// 	dispatch,
-	// })
-
 	useEffect(() => {
 		(async () => {
 			const payload = await get({
