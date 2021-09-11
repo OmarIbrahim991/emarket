@@ -15,11 +15,13 @@ const App = () => {
 	useEffect(() => {
 		(async () => {
 			const payload = await get({
-				resources: ["products", "categories"],
-				endpoints: ["/products", "/products/categories",],
+				resources: { products: "/products", categories: "/products/categories"},
+				// resources: ["products", "categories"],
+				// endpoints: ["/products", "/products/categories",],
 				dispatch,
 			})
-			payload && dispatch(loadInitialData(payload))
+			console.log(payload)
+			dispatch(loadInitialData(payload))
 		})()
 	}, [])
 

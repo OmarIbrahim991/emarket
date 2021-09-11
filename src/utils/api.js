@@ -2,19 +2,20 @@ import { setLoadingState, setErrorState } from '../actions'
 
 const API_BASE_URL = "https://fakestoreapi.com"
 
-export const get = async ({ resources, endpoints, dispatch }) => {
+export const get = async ({ resources, dispatch }) => {
 	try {
 		dispatch(setLoadingState(true))
-		const data = await Promise.all(endpoints.map(async (endpoint) => {
-			const response = await fetch(API_BASE_URL + endpoint)
-			return await response.json()
-		}))
 		const payload = {}
-		resources.forEach((resource, i) => payload[resource] = data[i])
+		await Promise.all(Object.entries(resources).map(async ([resource, endpoint]) => {
+			const response = await fetch(API_BASE_URL + endpoint)
+			const jsonResp =  await response.json()
+			payload[resource] = jsonResp
+		}))
 		return payload
 	}
 	catch (error) {
 		dispatch(setErrorState(true))
+		console.log(error.message)
 	}
 	finally {
 		dispatch(setLoadingState(false))
