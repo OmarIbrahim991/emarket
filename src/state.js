@@ -17,24 +17,24 @@ export const reducer = (state=initialState, action={ type: "NOOP", payload: {} }
 		case SET_ERROR_STATE:
 			const { error } = action.payload
 			return { ...state, error, }
-        case TOGGLE_LIKE_PRODUCT:
-            const updatedProducts = state.products.map(product => {
-                if (product.id !== action.payload.id) return product
-                return {
-                    ...product,
-                    liked: product.liked ? false : true,
-                }
-            })
+		case TOGGLE_LIKE_PRODUCT:
+			const updatedProducts = state.products.map(product => {
+				if (product.id !== action.payload.id) return product
+				return {
+					...product,
+					liked: product.liked ? false : true,
+				}
+			})
 			return { ...state, products: updatedProducts, }
-        case ADD_TO_CART:
-            const { id, count } = action.payload
-            return {
-                ...state,
-                cart: {
-                    ...state.cart,
-                    [id]: count,
-                }
-            }
+		case ADD_TO_CART:
+			const { id, count } = action.payload
+			return {
+				...state,
+				cart: {
+					...state.cart,
+					[id]: count,
+				}
+			}
 		default:
 			return state
 	}

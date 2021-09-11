@@ -7,8 +7,8 @@ const Header = () => {
 	const { state } = useContext(StateContext)
 	const inCart = useMemo(() => Object.values(state.cart).reduce((a,b) => a+b, 0), [state.cart])
 
-    return (
-        <Container as="header" fluid>
+	return (
+		<Container as="header" fluid>
 			<Row className="main-header">
 				<Col><h1>E-Market</h1></Col>
 				<Col>
@@ -42,7 +42,7 @@ const Header = () => {
 				</Col>
 			</Row>
 		</Container>
-    )
+	)
 }
 
 export default Header

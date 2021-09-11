@@ -25,7 +25,7 @@ const App = () => {
 				endpoints: ["/products", "/products/categories",],
 				dispatch,
 			})
-			dispatch(loadInitialData(payload))
+			payload && dispatch(loadInitialData(payload))
 		})()
 	}, [])
 

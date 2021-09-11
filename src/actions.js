@@ -5,29 +5,29 @@ export const ADD_TO_CART = "ADD_TO_CART"
 export const TOGGLE_LIKE_PRODUCT = "TOGGLE_LIKE_PRODUCT"
 
 export const setLoadingState = (loadingState) => ({
-    type: SET_LOADING_STATE,
-    payload: { loading: loadingState, },
+	type: SET_LOADING_STATE,
+	payload: { loading: loadingState, },
 })
 
 export const setErrorState = (errorState) => ({
-    type: SET_ERROR_STATE,
-    payload: { error: errorState, },
+	type: SET_ERROR_STATE,
+	payload: { error: errorState, },
 })
 
 export const loadInitialData = ({ products=[], categories=[], }) => ({
-    type: LOAD_INITIAL_DATA,
-    payload: {
-        products,
-        categories,
-    }
+	type: LOAD_INITIAL_DATA,
+	payload: {
+		products,
+		categories,
+	}
 })
 
 export const addToCart = ({ id, count }) => ({
-    type: ADD_TO_CART,
-    payload: { id, count, },
+	type: ADD_TO_CART,
+	payload: { id, count, },
 })
 
 export const toggleLikeProduct = (id) => ({
-    type: TOGGLE_LIKE_PRODUCT,
-    payload: { id, },
+	type: TOGGLE_LIKE_PRODUCT,
+	payload: { id, },
 })

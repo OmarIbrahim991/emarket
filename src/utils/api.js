@@ -15,7 +15,6 @@ export const get = async ({ resources, endpoints, dispatch }) => {
 	}
 	catch (error) {
 		dispatch(setErrorState(true))
-		console.error(error.message)
 	}
 	finally {
 		dispatch(setLoadingState(false))
