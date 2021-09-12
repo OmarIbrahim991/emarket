@@ -30,16 +30,16 @@ svg {
 }
 
 .products-container {
-	display: flex;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(24vw, max-content));
+	grid-gap: 1em;
 	justify-content: center;
-	align-content: flex-start;
-	margin: 1em auto;
+	padding: initial;
 	min-height: 75vh;
 }
 
 .product {
-	width: 23vw;
+	width: 24vw;
 	min-width: 15rem;
 	display: flex;
 	flex-direction: column;

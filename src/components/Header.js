@@ -10,7 +10,7 @@ const Header = () => {
 	return (
 		<Container as="header" fluid>
 			<Row className="main-header">
-				<Col><h1>E-Market</h1></Col>
+				<Col><h1 style={{ fontFamily: "'Kaushan Script', cursive" }}>E-Market</h1></Col>
 				<Col>
 					<Row>
 						<Col className="right">
