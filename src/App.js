@@ -16,11 +16,8 @@ const App = () => {
 		(async () => {
 			const payload = await get({
 				resources: { products: "/products", categories: "/products/categories"},
-				// resources: ["products", "categories"],
-				// endpoints: ["/products", "/products/categories",],
 				dispatch,
 			})
-			console.log(payload)
 			dispatch(loadInitialData(payload))
 		})()
 	}, [])
