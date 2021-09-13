@@ -8,20 +8,23 @@ const ProductsList = ({ category }) => {
 	const products = useMemo(() => {
 		const result = state.products
 		if (category === "all") {
-			return result
+			return result.filter(p => !state.search || p.title.toLowerCase().includes(state.search.toLowerCase()))
 		}
-		return result.filter(p => p.category === category)
-	}, [category, state.products])
+		return result.filter(p => p.category === category && (!state.search || p.title.toLowerCase().includes(state.search.toLowerCase())))
+	}, [category, state.products, state.search])
 
 	return (
 		<>
 			{
-				products.length > 0 ?
+				state.products.length > 0 ?
 					<section className="products-container">
 						{
-							products.map((product) => (
-								<Product key={product.id} {...product} />
-							))
+							products.length > 0 ?
+								products.map((product) => (
+									<Product key={product.id} {...product} />
+								))
+							:
+								<h1>No results</h1>
 						}
 					</section>
 				:

@@ -3,6 +3,7 @@ export const SET_LOADING_STATE = "SET_LOADING_STATE"
 export const SET_ERROR_STATE = "SET_ERROR_STATE"
 export const ADD_TO_CART = "ADD_TO_CART"
 export const TOGGLE_LIKE_PRODUCT = "TOGGLE_LIKE_PRODUCT"
+export const SET_SEARCH = "SET_SEARCH"
 
 export const setLoadingState = (loadingState) => ({
 	type: SET_LOADING_STATE,
@@ -30,4 +31,9 @@ export const addToCart = ({ id, count }) => ({
 export const toggleLikeProduct = (id) => ({
 	type: TOGGLE_LIKE_PRODUCT,
 	payload: { id, },
+})
+
+export const setSearch = (search) => ({
+	type: SET_SEARCH,
+	payload: { search, }
 })

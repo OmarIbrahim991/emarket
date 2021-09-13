@@ -2,17 +2,23 @@ import { useContext, useMemo } from 'react'
 import { Container, Row, Col, Badge, Dropdown, Form, } from 'react-bootstrap'
 import { FaShoppingCart, FaListUl } from 'react-icons/fa'
 import { StateContext } from '../state'
+import { setSearch } from '../actions'
 
 const Header = () => {
-	const { state } = useContext(StateContext)
+	const { state, dispatch } = useContext(StateContext)
 	const inCart = useMemo(() => Object.values(state.cart).reduce((a,b) => a+b, 0), [state.cart])
+
+	const handleChange = (event) => {
+		console.log(event.target.value)
+		dispatch(setSearch(event.target.value))
+	}
 
 	return (
 		<Container as="header" fluid>
 			<Row className="main-header">
 				<Col><h1 style={{ fontFamily: "'Kaushan Script', cursive" }}>E-Market</h1></Col>
-				<Col>
-					<Form.Control size="lg" type="search" placeholder="&#128269;Search for products!" />
+				<Col xs={4} sm={4} md={6} lg={8} xl={8} xxl={8}>
+					<Form.Control size="lg" type="search" onChange={handleChange} placeholder="&#128269;Search for products!" />
 				</Col>
 				<Col>
 					<Row>
