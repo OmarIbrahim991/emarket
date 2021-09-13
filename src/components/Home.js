@@ -15,7 +15,7 @@ const Home = () => {
 					<Nav.Link eventKey="men's clothing">Men's Clothing</Nav.Link>
 					<Nav.Link eventKey="women's clothing">Women's Clothing</Nav.Link>
 				</Nav>
-				<Tab.Content>
+				<Tab.Content style={{ minHeight: "80vh"}}>
 					<Tab.Pane eventKey={selected} active>
 						<ProductsList category={selected} />
 					</Tab.Pane>

@@ -14,16 +14,20 @@ const ProductsList = ({ category }) => {
 	}, [category, state.products])
 
 	return (
-		<section className="products-container">
+		<>
 			{
 				products.length > 0 ?
-					products.map((product) => (
-						<Product key={product.id} {...product} />
-					))
+					<section className="products-container">
+						{
+							products.map((product) => (
+								<Product key={product.id} {...product} />
+							))
+						}
+					</section>
 				:
 					<Spinner animation="border" variant="dark" style={{ marginTop: "10%" }} />
 			}
-		</section>
+		</>
 	)
 }
 

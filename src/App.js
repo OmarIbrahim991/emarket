@@ -32,7 +32,7 @@ const App = () => {
 			<LoadingBar loading={state.loading} />
 			<BrowserRouter>
 				<Switch>
-					<Route exact path="/">
+					<Route path="/">
 						<Home />
 					</Route>
 				</Switch>

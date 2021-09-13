@@ -1,5 +1,5 @@
 import { useContext, useMemo } from 'react'
-import { Container, Row, Col, Badge, Dropdown } from 'react-bootstrap'
+import { Container, Row, Col, Badge, Dropdown, Form, } from 'react-bootstrap'
 import { FaShoppingCart, FaListUl } from 'react-icons/fa'
 import { StateContext } from '../state'
 
@@ -11,6 +11,9 @@ const Header = () => {
 		<Container as="header" fluid>
 			<Row className="main-header">
 				<Col><h1 style={{ fontFamily: "'Kaushan Script', cursive" }}>E-Market</h1></Col>
+				<Col>
+					<Form.Control size="lg" type="search" placeholder="&#128269;Search for products!" />
+				</Col>
 				<Col>
 					<Row>
 						<Col className="right">
