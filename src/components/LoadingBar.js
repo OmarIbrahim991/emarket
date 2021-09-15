@@ -1,9 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { ProgressBar } from 'react-bootstrap'
+import { StateContext } from '../state'
 
-const LoadingBar = ({ loading }) => {
+const LoadingBar = () => {
 	const [progress, setProgress] = useState(0)
 	const mounted = useRef(false)
+	const { state } = useContext(StateContext)
+	const { loading } = state
 
 	useEffect(() => {
 		mounted.current = true

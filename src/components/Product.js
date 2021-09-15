@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { Card, Form } from 'react-bootstrap'
 import { FaArrowUp, FaArrowDown, FaCartPlus, FaHeart,FaRegHeart } from 'react-icons/fa'
 import { StateContext } from '../state'
@@ -7,7 +8,7 @@ import { addToCart, toggleLikeProduct } from '../actions'
 const Product = ({ id }) => {
 	const { state, dispatch } = useContext(StateContext)
 	const index = useMemo(() => state.products.findIndex(p => p.id === id), [id, state.products])
-	const { title, image, price, liked, category, description, rating } = state.products[index]
+	const { title, image, price, liked } = state.products[index]
 	const [inCart, setInCart] = useState(state.cart[id] ? state.cart[id] : 0)
 
 	const handleChange = (event) => {
@@ -29,11 +30,12 @@ const Product = ({ id }) => {
 
 	return (
 		<Card className="product">
-			<Card.Img className="product-image" variant="top" src={image} />
-			<Card.Body>
-				<Card.Title style={{ fontWeight: "bolder" }}>{title}</Card.Title>
-				
-			</Card.Body>
+			<Link to={`/products/${id}`} style={{ textDecoration: 'none', color: "inherit" }}>
+				<Card.Img className="product-image" variant="top" src={image} />
+				<Card.Body>
+					<Card.Title style={{ fontWeight: "bolder" }}>{title}</Card.Title>
+				</Card.Body>
+			</Link>
 			<Card.Footer className="product-footer">
 				<Card.Text style={{ margin: "1em 0" }}>{price}$</Card.Text>
 
