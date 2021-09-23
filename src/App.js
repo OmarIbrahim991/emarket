@@ -6,6 +6,7 @@ import { loadInitialData } from './actions'
 import Home from './components/Home'
 import ProductDetails from './components/ProductDetails'
 import Error from './components/Error'
+import Cart from './components/Cart'
 
 const App = () => {
 	const [state, dispatch] = useReducer(reducer, initialState)
@@ -33,6 +34,9 @@ const App = () => {
 					</Route>
 					<Route path="/products/:productId">
 						<ProductDetails />
+					</Route>
+					<Route path="/cart">
+						<Cart />
 					</Route>
 				</Switch>
 			</BrowserRouter>

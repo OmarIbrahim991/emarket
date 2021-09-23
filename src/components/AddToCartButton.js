@@ -5,8 +5,8 @@ import { StateContext } from '../state'
 import { addToCart } from '../actions'
 
 const AddToCartButton = ({ id, large=false }) => {
-    const [inCart, setInCart] = useState(0)
     const { state, dispatch } = useContext(StateContext)
+    const [inCart, setInCart] = useState(state.cart[id] ? state.cart[id] : 0)
 
     const handleChange = (event) => {
 		const { value } = event.target
@@ -18,10 +18,6 @@ const AddToCartButton = ({ id, large=false }) => {
 	const decrement = () => {
 		setInCart(current => Math.max(0, current-1))
 	}
-
-    useEffect(() => {
-        setInCart(state.cart[id] ? state.cart[id] : 0)
-    }, [id])
 
 	useEffect(() => {
 		dispatch(addToCart({ id, count: inCart }))

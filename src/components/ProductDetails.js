@@ -1,10 +1,11 @@
 import { useContext, useMemo } from 'react'
 import { Container, Image, Carousel, Badge } from 'react-bootstrap'
 import { useParams, Link } from 'react-router-dom'
-import { FaHeart, FaRegHeart, FaHome } from 'react-icons/fa'
+import { FaHeart, FaRegHeart } from 'react-icons/fa'
 import { StateContext } from '../state'
 import { toggleLikeProduct } from '../actions'
 import AddToCartButton from './AddToCartButton'
+import NavHeader from './NavHeader'
 
 const ProductDetails = () => {
 	const { state, dispatch } = useContext(StateContext)
@@ -16,11 +17,7 @@ const ProductDetails = () => {
 
 	return (
 		<>
-			<header className="main-header">
-				<Link to="/" style={{ textDecoration: 'none', color: "inherit" }}>
-					<FaHome size={50} />
-				</Link>
-			</header>
+			<NavHeader />
 			<Container>
 				<Image src={image} thumbnail style={{ maxWidth: "90vw", maxHeight: "75vh" }} />
 				<h3>{title} ({price}$)</h3>
@@ -37,7 +34,7 @@ const ProductDetails = () => {
 					<Carousel variant="dark">
 						{
 							state.products.filter(p => p.category === category && p.id !== id).map((product) => (
-								<Carousel.Item interval={1000}>
+								<Carousel.Item interval={1000} key={product.id}>
 									<Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: "inherit" }}>
 										<Image src={product.image} style={{ maxHeight: "40vh" }} rounded />
 										<Carousel.Caption>

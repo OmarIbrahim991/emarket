@@ -1,5 +1,6 @@
 import { useContext, useMemo } from 'react'
 import { Container, Row, Col, Badge, Dropdown, Form, } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import { FaShoppingCart, FaListUl } from 'react-icons/fa'
 import { StateContext } from '../state'
 import { setSearch } from '../actions'
@@ -24,7 +25,9 @@ const Header = () => {
 					<Row>
 						<Col className="right">
 							<span style={{ position: "relative" }}>
-								<FaShoppingCart size={35} className="clickable" style={{ margin: "0.35em 0 0"}} />
+								<Link to="/cart" style={{ textDecoration: 'none', color: "inherit" }}>
+									<FaShoppingCart size={35} className="clickable" style={{ margin: "0.35em 0 0"}} />
+								</Link>
 								{
 									inCart > 0 &&
 									<Badge text="main" bg="danger" pill style={{ position: "absolute", top: -5, right: -10, bordeRadius: "50%" }}>
