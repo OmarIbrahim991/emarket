@@ -1,32 +1,17 @@
-import { useState, useContext, useEffect, useMemo } from 'react'
+import { useContext, useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { Card, Form } from 'react-bootstrap'
-import { FaArrowUp, FaArrowDown, FaCartPlus, FaHeart,FaRegHeart } from 'react-icons/fa'
+import { Card } from 'react-bootstrap'
+import {FaHeart, FaRegHeart } from 'react-icons/fa'
 import { StateContext } from '../state'
-import { addToCart, toggleLikeProduct } from '../actions'
+import { toggleLikeProduct } from '../actions'
+import AddToCartButton from './AddToCartButton'
 
 const Product = ({ id }) => {
 	const { state, dispatch } = useContext(StateContext)
 	const index = useMemo(() => state.products.findIndex(p => p.id === id), [id, state.products])
 	const { title, image, price, liked } = state.products[index]
-	const [inCart, setInCart] = useState(state.cart[id] ? state.cart[id] : 0)
 
-	const handleChange = (event) => {
-		const { value } = event.target
-		setInCart(isNaN(value) ? 0 : Math.abs(parseInt(value)))
-	}
-	const increment = () => {
-		setInCart(current => current+1)
-	}
-	const decrement = () => {
-		setInCart(current => Math.max(0, current-1))
-	}
 	const toggleLike = () => dispatch(toggleLikeProduct(id))
-
-	useEffect(() => {
-		dispatch(addToCart({ id, count: inCart }))
-	}, [inCart, id, dispatch])
-
 
 	return (
 		<Card className="product">
@@ -43,16 +28,7 @@ const Product = ({ id }) => {
 					{liked ? <FaHeart size={35} color="red" onClick={toggleLike} /> : <FaRegHeart size={30} onClick={toggleLike} />}
 				</span>
 
-				{
-					inCart === 0 ?
-						<FaCartPlus size={40} onClick={increment} className="reversable clickable" />
-					:
-						<div className="product-counter">
-							<FaArrowUp onClick={increment} size={25} className="reversable clickable" />
-							<Form.Control type="number" className="input-counter" onChange={handleChange} value={inCart} />
-							<FaArrowDown onClick={decrement} size={25} className="reversable clickable" />
-						</div>
-				}
+				<AddToCartButton id={id} />
 			</Card.Footer>
 		</Card>
 	)
