@@ -1,40 +1,90 @@
-import { useContext, useMemo } from 'react'
-import { Container, Row, Table } from 'react-bootstrap'
+import { useContext, useMemo, useState } from 'react'
+import { Container, Row, Col, Table, Image, Button, Modal } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom'
+import { FaTrash } from 'react-icons/fa'
 import { StateContext } from '../state'
+import { addToCart, addOrder } from '../actions'
 import NavHeader from './NavHeader'
+import getOrderData from '../utils/getOrderData'
+import AddToCartButton from './AddToCartButton'
 
 const Cart = () => {
-    const { state } = useContext(StateContext)
-    const { cart, products } = state
-    const totalPrice = useMemo(() => {
-        let total = 0
-        products.forEach(({ id, price }) => total += price * cart[id])
-        return total
-    }, [products, cart])
+	const { state, dispatch } = useContext(StateContext)
+	const { cart, products } = state
+	const { orderItems, total } = useMemo(() => getOrderData({ products, cart }), [products, cart])
+	const [show, setShow] = useState(false)
+	const history = useHistory()
 
-    return (
-        <>
-            <NavHeader />
-            <Container>
-                <Row><h1>Cart</h1></Row>
-                <Table striped bordered hover>
-                    <tbody>
-                    {
-                        products.filter(p => cart[p.id] > 0).map(({ id, title, price }) => (
-                            <tr key={id}>
-                                <td>{title}</td>
-                                <td>{price}$</td>
-                                <td>{cart[id]}</td>
-                                <td>{(price * cart[id]).toFixed(2)}$</td>
-                            </tr>
-                        ))
-                    }
-                    </tbody>
-                </Table>
-                <h3>{totalPrice}</h3>
-            </Container>
-        </>
-    )
+	const handleRemove = (id) => {
+		dispatch(addToCart({ id, count: 0 }))
+		setShow(false)
+	}
+
+	const placeOrder = () => {
+		dispatch(addOrder(orderItems))
+		history.push("/")
+	}
+
+	return (
+		<>
+			<NavHeader />
+			<Container>
+				<Row><h1>Cart</h1></Row>
+				<Table style={{ border: "5px solid" }} responsive striped hover>
+					<thead>
+						<tr style={{ borderBottom: "3px solid" }}>
+							<th colSpan="2">Product</th>
+							<th>Price/Unit</th>
+							<th>N.O Units</th>
+							<th>Total</th>
+							<th>Remove</th>
+						</tr>
+					</thead>
+					<tbody>
+					{
+						orderItems.map(({ id, title, image, price, count, totalPrice }) => (
+							<tr key={id}>
+								<td className="align-middle"><Image src={image} alt={title} height={100} rounded /></td>
+								<td className="align-middle">{title}</td>
+								<td className="align-middle">{price}$</td>
+								<td className="align-middle"><AddToCartButton id={id} /></td>
+								<td className="align-middle">{totalPrice}$</td>
+								<td className="align-middle">
+									<FaTrash size={35} className="clickable" onClick={() => setShow(id)} />
+								</td>
+							</tr>
+						))
+					}
+					</tbody>
+					<tfoot style={{ fontWeight: "bolder", borderTop: "3px solid" }}>
+						<tr>
+							<td colSpan="2">Total Price</td>
+							<td colSpan="4">{total}$</td>
+						</tr>
+					</tfoot>
+				</Table>
+				<Row>
+					<Col>
+						<Button variant="danger" size="lg" onClick={() => history.push("/")}>Cancel</Button>
+					</Col>
+					<Col>
+						<Button variant="success" size="lg" onClick={placeOrder}>Proceed ({total}$)</Button>
+					</Col>
+				</Row>
+			</Container>
+			<hr />
+			<Modal show={show !== false} onHide={() => setShow(false)}>
+				<Modal.Header closeButton>
+					<Modal.Title>Remove Item</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>Are you sure you want to remove this item from cart!</Modal.Body>
+				<Modal.Footer>
+					<Button variant="secondary" onClick={() => setShow(false)}>Cancel</Button>
+					<Button variant="danger" onClick={() => handleRemove(show)}>Remove</Button>
+				</Modal.Footer>
+			</Modal>
+		</>
+	)
 }
 
 export default Cart

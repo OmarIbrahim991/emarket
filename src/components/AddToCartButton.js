@@ -19,9 +19,13 @@ const AddToCartButton = ({ id, large=false }) => {
 		setInCart(current => Math.max(0, current-1))
 	}
 
+    useEffect(() => {
+        setInCart(state.cart && state.cart[id] ? state.cart[id] : 0)
+    }, [id])
+
 	useEffect(() => {
 		dispatch(addToCart({ id, count: inCart }))
-	}, [inCart, id, dispatch])
+	}, [inCart, dispatch])
 
     return (
         <>

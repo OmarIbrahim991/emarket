@@ -1,10 +1,10 @@
 import { createContext } from 'react'
-import { LOAD_INITIAL_DATA, SET_LOADING_STATE, SET_ERROR_STATE, ADD_TO_CART, TOGGLE_LIKE_PRODUCT, SET_SEARCH } from './actions'
+import { LOAD_INITIAL_DATA, SET_LOADING_STATE, SET_ERROR_STATE, ADD_TO_CART, TOGGLE_LIKE_PRODUCT, SET_SEARCH, ADD_ORDER } from './actions'
 
 
 export const StateContext = createContext()
 
-export const initialState = { products: [], categories: [], cart: {}, search: "", loading: false, error: false }
+export const initialState = { products: [], categories: [], cart: {}, orders: [], search: "", loading: false, error: false }
 
 export const reducer = (state=initialState, action={ type: "NOOP", payload: {} }) => {
 	switch (action.type) {
@@ -36,7 +36,15 @@ export const reducer = (state=initialState, action={ type: "NOOP", payload: {} }
 				}
 			}
 		case SET_SEARCH:
-			return { ...state, search: action.payload.search, }
+			const { search } = action.payload
+			return { ...state, search, }
+		case ADD_ORDER:
+			const { order } = action.payload
+			return {
+				...state,
+				cart: {},
+				orders: [...state.orders, order]
+			}
 		default:
 			return state
 	}
