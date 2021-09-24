@@ -6,7 +6,7 @@ import { addToCart } from '../actions'
 
 const AddToCartButton = ({ id, large=false }) => {
     const { state, dispatch } = useContext(StateContext)
-    const [inCart, setInCart] = useState(state.cart[id] ? state.cart[id] : 0)
+    const [inCart, setInCart] = useState(state.cart && state.cart[id] ? state.cart[id] : 0)
 
     const handleChange = (event) => {
 		const { value } = event.target

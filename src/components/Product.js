@@ -10,6 +10,7 @@ const Product = ({ id }) => {
 	const { state, dispatch } = useContext(StateContext)
 	const index = useMemo(() => state.products.findIndex(p => p.id === id), [id, state.products])
 	const { title, image, price, liked } = index >= 0 ? state.products[index] : {}
+
 	const toggleLike = () => dispatch(toggleLikeProduct(id))
 
 	return (

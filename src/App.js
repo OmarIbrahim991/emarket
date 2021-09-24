@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from 'react'
 import { Route, BrowserRouter, Switch } from 'react-router-dom'
 import { reducer, initialState, StateContext } from './state'
-import { get } from './utils/api'
+import { get } from './utils/mockAPI'
 import { loadInitialData } from './actions'
 import Home from './components/Home'
 import ProductDetails from './components/ProductDetails'
