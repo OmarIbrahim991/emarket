@@ -21,7 +21,7 @@ const Cart = () => {
 	}
 
 	const placeOrder = () => {
-		dispatch(addOrder(orderItems))
+		dispatch(addOrder({ orderItems, total }))
 		history.push("/")
 	}
 
@@ -41,22 +41,22 @@ const Cart = () => {
 						</tr>
 					</thead>
 					<tbody>
-					{
-						orderItems.map(({ id, title, image, price, totalPrice }) => (
-							<tr key={id}>
-								<td className="align-middle"><Image src={image} alt={title} height={100} rounded /></td>
-								<td className="align-middle">{title}</td>
-								<td className="align-middle">{price}$</td>
-								<td className="align-middle">
-									<div style={{ display: "flex", justifyContent: "center" }}><AddToCartButton id={id} /></div>
-								</td>
-								<td className="align-middle">{totalPrice}$</td>
-								<td className="align-middle">
-									<FaTrash size={35} className="clickable" onClick={() => setShow(id)} />
-								</td>
-							</tr>
-						))
-					}
+						{
+							orderItems.map(({ id, title, image, price, totalPrice }) => (
+								<tr key={id}>
+									<td className="align-middle"><Image src={image} alt={title} height={100} rounded /></td>
+									<td className="align-middle">{title}</td>
+									<td className="align-middle">{price}$</td>
+									<td className="align-middle">
+										<div style={{ display: "flex", justifyContent: "center" }}><AddToCartButton id={id} /></div>
+									</td>
+									<td className="align-middle">{totalPrice}$</td>
+									<td className="align-middle">
+										<FaTrash size={35} className="clickable" onClick={() => setShow(id)} />
+									</td>
+								</tr>
+							))
+						}
 					</tbody>
 					<tfoot style={{ fontWeight: "bolder", borderTop: "3px solid" }}>
 						<tr>
