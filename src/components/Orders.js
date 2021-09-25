@@ -2,10 +2,15 @@ import { useContext } from 'react'
 import { Container, Row, Accordion, Table, Image, Badge } from 'react-bootstrap'
 import NavHeader from './NavHeader'
 import { StateContext } from '../state'
+import NoContent from './NoContent'
 
 const Orders = () => {
 	const { state } = useContext(StateContext)
 	const { orders } = state
+
+	if (!orders || orders.length === 0) {
+		return <NoContent />
+	}
 
 	return (
 		<>

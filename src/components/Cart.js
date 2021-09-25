@@ -7,6 +7,7 @@ import { addToCart, addOrder } from '../actions'
 import NavHeader from './NavHeader'
 import getOrderData from '../utils/getOrderData'
 import AddToCartButton from './AddToCartButton'
+import NoContent from './NoContent'
 
 const Cart = () => {
 	const { state, dispatch } = useContext(StateContext)
@@ -23,6 +24,10 @@ const Cart = () => {
 	const placeOrder = () => {
 		dispatch(addOrder({ orderItems, total }))
 		history.push("/")
+	}
+
+	if (!orderItems || orderItems.length === 0) {
+		return <NoContent />
 	}
 
 	return (

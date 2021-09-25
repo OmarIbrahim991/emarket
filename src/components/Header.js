@@ -1,17 +1,16 @@
 import { useContext, useMemo } from 'react'
-import { Container, Row, Col, Badge, Dropdown, Form, } from 'react-bootstrap'
-import { Link, useHistory } from 'react-router-dom'
-import { FaShoppingCart, FaListUl } from 'react-icons/fa'
+import { Container, Row, Col, Badge, Form, } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { FaShoppingCart } from 'react-icons/fa'
 import { StateContext } from '../state'
 import { setSearch } from '../actions'
+import Menu from './Menu'
 
 const Header = () => {
 	const { state, dispatch } = useContext(StateContext)
 	const inCart = useMemo(() => Object.values(state.cart).reduce((a,b) => a+b, 0), [state.cart])
-	const history = useHistory()
 
 	const handleChange = (event) => {
-		console.log(event.target.value)
 		dispatch(setSearch(event.target.value))
 	}
 
@@ -38,18 +37,7 @@ const Header = () => {
 							</span>
 						</Col>
 						<Col className="right" md="auto">
-							<Dropdown>
-								<Dropdown.Toggle variant="dark">
-									<FaListUl size={30} />
-								</Dropdown.Toggle>
-								<Dropdown.Menu variant="dark" align="end">
-									<Dropdown.Item onClick={() => history.push("/cart")}>Cart</Dropdown.Item>
-									<Dropdown.Item onClick={() => history.push("/orders")}>My Orders</Dropdown.Item>
-									<Dropdown.Item onClick={() => history.push("/favorites")}>My Favorites</Dropdown.Item>
-									<Dropdown.Divider />
-									<Dropdown.Item href="#/action-3">Logout</Dropdown.Item>
-								</Dropdown.Menu>
-							</Dropdown>
+							<Menu />
 						</Col>
 					</Row>
 				</Col>

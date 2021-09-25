@@ -5,6 +5,7 @@ import { FaTrash } from 'react-icons/fa'
 import { toggleLikeProduct } from '../actions'
 import NavHeader from './NavHeader'
 import AddToCartButton from './AddToCartButton'
+import NoContent from './NoContent'
 
 const Favorites = () => {
 	const { state, dispatch } = useContext(StateContext)
@@ -13,6 +14,10 @@ const Favorites = () => {
 	const handleRemove = (id) => {
 		dispatch(toggleLikeProduct(id))
 		setShow(false)
+	}
+
+	if (state.products.filter(p => p.liked).length === 0) {
+		return <NoContent />
 	}
 
 	return (
