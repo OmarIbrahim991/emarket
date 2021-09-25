@@ -9,22 +9,27 @@ import Error from './components/Error'
 import Cart from './components/Cart'
 import Favorites from './components/Favorites'
 import Orders from './components/Orders'
+import Login from './components/Login'
 
 const App = () => {
 	const [state, dispatch] = useReducer(reducer, initialState)
 
 	useEffect(() => {
-		(async () => {
+		state.user && (async () => {
 			const payload = await get({
 				resources: { products: "/products", categories: "/products/categories"},
 				dispatch,
 			})
 			dispatch(loadInitialData(payload))
 		})()
-	}, [])
+	}, [state.user])
 
 	if (state.error) {
 		return <Error />
+	}
+
+	if (!state.user) {
+		return <Login dispatch={dispatch} />
 	}
 
 	return (

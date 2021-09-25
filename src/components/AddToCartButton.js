@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import { Form } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 import { FaArrowUp, FaArrowDown, FaCartPlus } from 'react-icons/fa'
 import { StateContext } from '../state'
 import { addToCart } from '../actions'
@@ -31,7 +31,14 @@ const AddToCartButton = ({ id, large=false }) => {
         <>
             {
                 inCart === 0 ?
-                    <FaCartPlus size={large ? 70 : 40} onClick={increment} className="reversable clickable" />
+                    <>
+                        {
+                            large ?
+                                <Button variant="dark" size="lg" onClick={increment}>Add to Cart</Button>
+                            :
+                                <FaCartPlus size={large ? 70 : 40} onClick={increment} className="reversable clickable" />
+                        }
+                    </>
                 :
                     <div className="product-counter">
                         <FaArrowUp onClick={increment} size={large ? 40 : 25} className="reversable clickable" />
