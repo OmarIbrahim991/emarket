@@ -7,6 +7,7 @@ import Home from './components/Home'
 import ProductDetails from './components/ProductDetails'
 import Error from './components/Error'
 import Cart from './components/Cart'
+import Favorites from './components/Favorites'
 
 const App = () => {
 	const [state, dispatch] = useReducer(reducer, initialState)
@@ -37,6 +38,9 @@ const App = () => {
 					</Route>
 					<Route path="/cart">
 						<Cart />
+					</Route>
+					<Route path="/favorites">
+						<Favorites />
 					</Route>
 				</Switch>
 			</BrowserRouter>

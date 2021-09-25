@@ -12,7 +12,6 @@ const ProductDetails = () => {
 	const { state, dispatch } = useContext(StateContext)
 	const { productId } = useParams()
 	const index = useMemo(() => state.products.findIndex(p => p.id === parseInt(productId)), [productId, state.products])
-	console.log(productId, index)
 	const { id, title, image, price, liked, category, description } = index >= 0 ? state.products[index] : {}
 
 	const toggleLike = () => dispatch(toggleLikeProduct(id))

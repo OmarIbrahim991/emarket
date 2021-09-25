@@ -75,6 +75,7 @@ svg {
 	justify-content: space-between;
 	align-items: center;
 	max-width: 100px;
+	margin: 0;
 }
 
 .input-counter {

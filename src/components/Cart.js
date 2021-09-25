@@ -42,12 +42,14 @@ const Cart = () => {
 					</thead>
 					<tbody>
 					{
-						orderItems.map(({ id, title, image, price, count, totalPrice }) => (
+						orderItems.map(({ id, title, image, price, totalPrice }) => (
 							<tr key={id}>
 								<td className="align-middle"><Image src={image} alt={title} height={100} rounded /></td>
 								<td className="align-middle">{title}</td>
 								<td className="align-middle">{price}$</td>
-								<td className="align-middle"><AddToCartButton id={id} /></td>
+								<td className="align-middle">
+									<div style={{ display: "flex", justifyContent: "center" }}><AddToCartButton id={id} /></div>
+								</td>
 								<td className="align-middle">{totalPrice}$</td>
 								<td className="align-middle">
 									<FaTrash size={35} className="clickable" onClick={() => setShow(id)} />
