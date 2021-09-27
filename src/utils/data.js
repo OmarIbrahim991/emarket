@@ -245,6 +245,54 @@ export const INITIAL_DATA = {
 				"rate": 3.6,
 				"count": 145
 			}
-		}
+		},
+		{
+			"id": 21,
+			"title": "ASOS DESIGN Wide Fit oxford shoes in tan leather with toe cap",
+			"price": 50.99,
+			"description": "ASOS DESIGN is designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+			"category": "men's clothing",
+			"image": "https://images.asos-media.com/products/asos-design-wide-fit-oxford-shoes-in-tan-leather-with-toe-cap/12315538-1-tan",
+			"rating": {
+				"rate": 3.1,
+				"count": 115
+			}
+		},
+		{
+			"id": 22,
+			"title": "ASOS DESIGN backless mule loafer in black leather",
+			"price": 55.99,
+			"description": "ASOS DESIGN is designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals",
+			"category": "men's clothing",
+			"image": "https://images.asos-media.com/products/asos-design-backless-mule-loafer-in-black-leather/12011431-1-black",
+			"rating": {
+				"rate": 3.4,
+				"count": 185
+			}
+		},
+		{
+			"id": 23,
+			"title": "Kendra Scott Elisa Pendant Necklace for Women, Fashion Jewelry, 14k Gold-Plated",
+			"price": 58.99,
+			"description": "Delicate and Dainty: If you love to layer or gravitate towards simpler styles, this piece is perfect for you. You won’t get tired of the Elisa Pendant Necklace, because it was made with everyday wear in mind.",
+			"category": "jewelery",
+			"image": "https://m.media-amazon.com/images/I/71gq4kjeFKL._AC_UL480_FMwebp_QL65_.jpg",
+			"rating": {
+				"rate": 4.5,
+				"count": 248
+			}
+		},
+		{
+			"id": 24,
+			"title": "CDE Forever Love Heart Pendant Necklaces for Women 925 Sterling Silver with Birthstone Zirconia",
+			"price": 79.99,
+			"description": "❤925 STERLING SILVER WITH Rhodium/ROSE GOLD PLATED❤ The pendant and the chain are made of 925 sterling silver with high cost Rhodium or rose gold plating surface. These safe materials have low sensitivity and oxidation resistance.",
+			"category": "jewelery",
+			"image": "https://m.media-amazon.com/images/I/715Hwc10x0L._AC_UL480_FMwebp_QL65_.jpg",
+			"rating": {
+				"rate": 4.5,
+				"count": 363
+			}
+		},
 	]
 }
