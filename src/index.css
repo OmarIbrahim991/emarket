@@ -1,7 +1,9 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	font-family: 'Times New Roman', serif;
+	background-color: #8b27b0;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -50,6 +52,7 @@ svg {
 	border-radius: 0.5em;
 	margin: 1em 1em;
 	padding: 1em;
+	background-color: lavender;
 }
 
 .product-image {
@@ -109,4 +112,12 @@ input[type=number] {
 
 .right {
 	text-align: right;
+}
+
+.nav-link-override {
+	color: white;
+}
+
+.nav-link-override:hover {
+	color: lightblue;
 }

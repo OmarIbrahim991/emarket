@@ -24,11 +24,11 @@ const ProductsList = ({ category }) => {
 									<Product key={product.id} {...product} />
 								))
 							:
-								<h1>No results</h1>
+								<h1 style={{ color: "white" }}>No results</h1>
 						}
 					</section>
 				:
-					<Spinner animation="border" variant="dark" style={{ marginTop: "10%" }} />
+					<Spinner animation="border" variant="light" style={{ marginTop: "10%" }} />
 			}
 		</>
 	)

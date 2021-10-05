@@ -16,7 +16,7 @@ const Orders = () => {
 		<>
 			<NavHeader />
 			<Container>
-				<Row><h1>My Orders</h1></Row>
+				<Row><h1 style ={{ color: "white" }}>My Orders</h1></Row>
 				<Accordion>
 					{
 						orders.map(({ orderItems, total }, index) => (

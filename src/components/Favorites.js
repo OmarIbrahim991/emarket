@@ -24,12 +24,12 @@ const Favorites = () => {
 		<>
 			<NavHeader />
 			<Container>
-				<Row><h1>My Favorites</h1></Row>
-				<Table style={{ border: "5px solid" }} bordered responsive striped hover>
+				<Row><h1 style ={{ color: "white" }}>My Favorites</h1></Row>
+				<Table style={{ border: "5px solid", color: "white" }} bordered responsive striped hover>
 					<tbody>
 						{
 							state.products.filter(p => p.liked).map(({ id, title, image, price, }) => (
-								<tr key={id}>
+								<tr key={id} style ={{ color: "white" }}>
 									<td className="align-middle"><Image src={image} alt={title} height={100} rounded /></td>
 									<td className="align-middle">{title}</td>
 									<td className="align-middle">{price}$</td>

@@ -33,28 +33,28 @@ const ProductDetails = () => {
 			<NavHeader />
 			{
 				index >= 0 ?
-					<Container>
-						<Image src={image} thumbnail style={{ maxWidth: "90vw", maxHeight: "75vh" }} />
+					<Container style={{ color: "white" }}>
+						<Image src={image} thumbnail style={{ maxWidth: "90vw", maxHeight: "75vh", margin: "1em" }} />
 						<h3>{title} ({price}$)</h3>
 						<p>{description}</p>
-						<div className="product-footer">
+						<div className="product-footer" style={{ backgroundColor: "black" }}>
 							<span className="clickable" style={{ padding: 0 }}>
 								{liked ? <FaHeart size={70} color="red" onClick={toggleLike} /> : <FaRegHeart size={60} onClick={toggleLike} />}
 							</span>
 
 							<AddToCartButton id={id} large={true} />
 						</div>
-						<Container style={{ margin: "1em" }}>
+						<Container style={{ margin: "2em" }}>
 							<h2 style={{ textAlign: "left", textDecoration: "underline" }}>Similar products</h2>
-							<Carousel variant="dark">
+							<Carousel>
 								{
 									state.products.filter(p => p.category === category && p.id !== id).map((product) => (
 										<Carousel.Item interval={1000} key={product.id}>
 											<Link to={`/products/${product.id}`} style={{ textDecoration: 'none', color: "inherit" }}>
 												<Image src={product.image} style={{ maxHeight: "40vh" }} rounded />
 												<Carousel.Caption>
-													<h4 style={{ backgroundColor: "white", opacity: 0.75 }}>
-														{product.title} - <Badge pill>{product.price}$</Badge>
+													<h4 style={{ backgroundColor: "black", opacity: 0.75 }}>
+														{product.title} <Badge pill>{product.price}$</Badge>
 													</h4>
 												</Carousel.Caption>
 											</Link>

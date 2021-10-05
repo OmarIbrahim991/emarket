@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from 'react'
-import { Route, BrowserRouter, Switch } from 'react-router-dom'
+import { Route, HashRouter, Switch } from 'react-router-dom'
 import { reducer, initialState, StateContext } from './state'
 import { get } from './utils/mockAPI'
 import { loadInitialData } from './actions'
@@ -34,7 +34,7 @@ const App = () => {
 
 	return (
 		<StateContext.Provider value={{ state, dispatch }}>
-			<BrowserRouter>
+			<HashRouter>
 				<Switch>
 					<Route exact path="/">
 						<Home />
@@ -52,7 +52,7 @@ const App = () => {
 						<Orders />
 					</Route>
 				</Switch>
-			</BrowserRouter>
+			</HashRouter>
 		</StateContext.Provider>
 	)
 }
