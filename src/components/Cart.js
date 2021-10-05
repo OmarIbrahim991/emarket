@@ -33,9 +33,9 @@ const Cart = () => {
 	return (
 		<>
 			<NavHeader />
-			<Container>
+			<Container style={{ color: "white" }}>
 				<Row><h1>Cart</h1></Row>
-				<Table style={{ border: "5px solid" }} responsive striped hover>
+				<Table style={{ border: "5px solid", color: "white" }} responsive striped hover>
 					<thead>
 						<tr style={{ borderBottom: "3px solid" }}>
 							<th colSpan="2">Product</th>
@@ -48,7 +48,7 @@ const Cart = () => {
 					<tbody>
 						{
 							orderItems.map(({ id, title, image, price, totalPrice }) => (
-								<tr key={id}>
+								<tr key={id} style ={{ color: "white" }}>
 									<td className="align-middle"><Image src={image} alt={title} height={100} rounded /></td>
 									<td className="align-middle">{title}</td>
 									<td className="align-middle">{price}$</td>

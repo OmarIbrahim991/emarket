@@ -11,16 +11,26 @@ const Home = () => {
 
 	return (
 		<>
-			<Header />
+			<Header setSelected={setSelected} />
 			<LoadingBar />
 			<Container>
 				<Tab.Container>
 					<Nav variant="tabs" onSelect={setSelected} id="nav-bar">
-						<Nav.Link eventKey="all" active={selected === "all"}>All Products</Nav.Link>
-						<Nav.Link eventKey="electronics">Electronics</Nav.Link>
-						<Nav.Link eventKey="jewelery">Jewelery</Nav.Link>
-						<Nav.Link eventKey="men's clothing">Men's Clothing</Nav.Link>
-						<Nav.Link eventKey="women's clothing">Women's Clothing</Nav.Link>
+						<Nav.Link eventKey="all" active={selected === "all"} bsPrefix="nav-link nav-link-override">
+							All Products
+						</Nav.Link>
+						<Nav.Link eventKey="electronics" active={selected === "electronics"} bsPrefix="nav-link nav-link-override">
+							Electronics
+						</Nav.Link>
+						<Nav.Link eventKey="jewelery" active={selected === "jewelery"} bsPrefix="nav-link nav-link-override">
+							Jewelery
+						</Nav.Link>
+						<Nav.Link eventKey="men's clothing" active={selected === "men's clothing"} bsPrefix="nav-link nav-link-override">
+							Men's Clothing
+						</Nav.Link>
+						<Nav.Link eventKey="women's clothing" active={selected === "women's clothing"} bsPrefix="nav-link nav-link-override">
+							Women's Clothing
+						</Nav.Link>
 					</Nav>
 					<Tab.Content style={{ minHeight: "80vh"}}>
 						<Tab.Pane eventKey={selected} active>

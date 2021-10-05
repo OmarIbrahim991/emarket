@@ -5,7 +5,7 @@ const Footer = () => {
 	return(
 		<Container as="footer" className="main-footer" style={{ textAlign: "center" }} fluid>
 			<FaRegCopyright size={25} />
-			{new Date().getFullYear()}
+			Apps Intellect {new Date().getFullYear()}
 		</Container>
 	)
 }

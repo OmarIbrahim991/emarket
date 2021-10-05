@@ -34,7 +34,7 @@ const AddToCartButton = ({ id, large=false }) => {
                     <>
                         {
                             large ?
-                                <Button variant="dark" size="lg" onClick={increment}>Add to Cart</Button>
+                                <Button size="lg" onClick={increment}>Add to Cart</Button>
                             :
                                 <FaCartPlus size={large ? 70 : 40} onClick={increment} className="reversable clickable" />
                         }
