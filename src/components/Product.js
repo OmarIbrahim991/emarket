@@ -5,11 +5,12 @@ import {FaHeart, FaRegHeart } from 'react-icons/fa'
 import { StateContext } from '../state'
 import { toggleLikeProduct } from '../actions'
 import AddToCartButton from './AddToCartButton'
+import Rating from './Rating'
 
 const Product = ({ id }) => {
 	const { state, dispatch } = useContext(StateContext)
 	const index = useMemo(() => state.products.findIndex(p => p.id === id), [id, state.products])
-	const { title, image, price, liked } = index >= 0 ? state.products[index] : {}
+	const { title, image, price, liked, rating } = index >= 0 ? state.products[index] : {}
 
 	const toggleLike = () => dispatch(toggleLikeProduct(id))
 
@@ -19,6 +20,7 @@ const Product = ({ id }) => {
 				<Card.Img className="product-image" variant="top" src={image} />
 				<Card.Body>
 					<Card.Title style={{ fontWeight: "bolder" }}>{title}</Card.Title>
+					<Rating rating={Math.round(rating.rate*2)/2} />
 				</Card.Body>
 			</Link>
 			<Card.Footer className="product-footer">

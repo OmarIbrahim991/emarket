@@ -20,7 +20,6 @@ const Login = ({ dispatch }) => {
 					<Form.Control type="text" size="lg" placeholder="Enter username" onChange={e => setUsername(e.target.value)} required />
 					<Form.Text className="text-muted">Temporarily use any username and password.</Form.Text>
 				</Form.Group>
-
 				<Form.Group className="mb-3" controlId="formBasicPassword">
 					<Form.Label>Password</Form.Label>
 					<Form.Control type="password" size="lg" placeholder="Password" onChange={e => setPassword(e.target.value)} required />
