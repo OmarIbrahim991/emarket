@@ -74,7 +74,7 @@ const ProductDetails = () => {
 							{
 								reviews && reviews.length > 0 ?
 									<>
-										<h3 style={{ margin: "1em" }}>{reviews.length} Reviews</h3>
+										<h3 style={{ margin: "1em" }}>{reviews.length} Review{reviews.length !== 1 && "s"}</h3>
 										{
 											reviews.map((review, i) => (
 												<Review key={i} index={i} {...review} />
