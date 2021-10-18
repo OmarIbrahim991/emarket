@@ -7,7 +7,7 @@ import {
 
 export const StateContext = createContext()
 
-export const initialState = { products: [], categories: [], cart: {}, orders: [], search: "", user: "user", loading: false, error: false }
+export const initialState = { products: [], categories: [], cart: {}, orders: [], search: "", user: "", loading: false, error: false }
 
 export const reducer = (state=initialState, action={ type: "NOOP", payload: {} }) => {
 	let updatedProducts = []
