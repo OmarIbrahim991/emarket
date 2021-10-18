@@ -1,17 +1,34 @@
+import { useState } from 'react'
 import { Container } from 'react-bootstrap'
 import { FaStar, FaRegStar, FaStarHalfAlt } from 'react-icons/fa'
 
-const Rating = ({ rating }) => {
+const Rating = ({ rating, inputVal, setInputVal, interactive=false }) => {
+    const [active, setActive] = useState(0)
+    const starProps = { size: 30, fill: "gold" }
+
+    if (interactive) {
+        return (
+            <Container onMouseLeave={() => setActive(inputVal)}>
+                {
+                    [1, 2, 3, 4, 5].map((r) => (
+                        <span key={r} className="clickable" onMouseOver={() => setActive(r)} onClick={() => setInputVal(r)}>
+                            {active >= r || (inputVal >= r && active >= inputVal) ? <FaStar {...starProps} /> : <FaRegStar {...starProps} />}
+                        </span>
+                    ))
+                }
+            </Container>
+        )
+    }
     return (
         <Container>
             {
                 [1, 2, 3, 4, 5].map((r) => (
                     <span key={r}>
                         {
-                            rating >= r ? 
-                                <FaStar size={30} fill="gold" />
+                            rating >= r ?
+                                <FaStar {...starProps} />
                             :
-                                r-rating > 0 && r-rating < 1 ? <FaStarHalfAlt size={30} fill="gold" /> : <FaRegStar size={30} fill="gold" />
+                                r-rating < 1 ? <FaStarHalfAlt {...starProps} /> : <FaRegStar {...starProps} />
                         }
                     </span>
                 ))

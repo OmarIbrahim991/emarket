@@ -7,12 +7,14 @@ import { get } from '../utils/mockAPI'
 import { toggleLikeProduct, loadInitialData } from '../actions'
 import AddToCartButton from './AddToCartButton'
 import NavHeader from './NavHeader'
+import Rating from './Rating'
+import ReviewForm from './ReviewForm'
 
 const ProductDetails = () => {
 	const { state, dispatch } = useContext(StateContext)
 	const { productId } = useParams()
 	const index = useMemo(() => state.products.findIndex(p => p.id === parseInt(productId)), [productId, state.products])
-	const { id, title, image, price, liked, category, description } = index >= 0 ? state.products[index] : {}
+	const { id, title, image, price, liked, category, description, rating } = index >= 0 ? state.products[index] : {}
 
 	const toggleLike = () => dispatch(toggleLikeProduct(id))
 
@@ -36,6 +38,7 @@ const ProductDetails = () => {
 					<Container>
 						<Image src={image} thumbnail style={{ maxWidth: "90vw", maxHeight: "75vh" }} />
 						<h3>{title} ({price}$)</h3>
+						<Rating rating={Math.round(rating.rate*2)/2} />
 						<p>{description}</p>
 						<div className="product-footer">
 							<span className="clickable" style={{ padding: 0 }}>
@@ -63,6 +66,8 @@ const ProductDetails = () => {
 								}
 							</Carousel>
 						</Container>
+
+						<ReviewForm />
 					</Container>
 				:
 				<Container>
