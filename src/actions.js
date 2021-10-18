@@ -6,6 +6,7 @@ export const TOGGLE_LIKE_PRODUCT = "TOGGLE_LIKE_PRODUCT"
 export const SET_SEARCH = "SET_SEARCH"
 export const ADD_ORDER = "ADD_ORDER"
 export const LOG_USER = "LOG_USER"
+export const ADD_REVIEW = "ADD_REVIEW"
 
 export const setLoadingState = (loadingState) => ({
 	type: SET_LOADING_STATE,
@@ -53,4 +54,9 @@ export const login = (user) => ({
 export const logout = () => ({
 	type: LOG_USER,
 	payload: { user: "" }
+})
+
+export const addReview = ({ id, review }) => ({
+	type: ADD_REVIEW,
+	payload: { id, review },
 })

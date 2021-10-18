@@ -1,10 +1,14 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import { FaStar, FaRegStar, FaStarHalfAlt } from 'react-icons/fa'
 
 const Rating = ({ rating, inputVal, setInputVal, interactive=false }) => {
     const [active, setActive] = useState(0)
     const starProps = { size: 30, fill: "gold" }
+
+    useEffect(() => {
+        setActive(inputVal)
+    }, [inputVal])
 
     if (interactive) {
         return (

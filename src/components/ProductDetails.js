@@ -9,12 +9,13 @@ import AddToCartButton from './AddToCartButton'
 import NavHeader from './NavHeader'
 import Rating from './Rating'
 import ReviewForm from './ReviewForm'
+import Review from './Review'
 
 const ProductDetails = () => {
 	const { state, dispatch } = useContext(StateContext)
 	const { productId } = useParams()
 	const index = useMemo(() => state.products.findIndex(p => p.id === parseInt(productId)), [productId, state.products])
-	const { id, title, image, price, liked, category, description, rating } = index >= 0 ? state.products[index] : {}
+	const { id, title, image, price, liked, category, description, rating, reviews, } = index >= 0 ? state.products[index] : {}
 
 	const toggleLike = () => dispatch(toggleLikeProduct(id))
 
@@ -66,8 +67,24 @@ const ProductDetails = () => {
 								}
 							</Carousel>
 						</Container>
-
-						<ReviewForm />
+						<hr />
+						<ReviewForm id={id} />
+						<hr />
+						<div>
+							{
+								reviews && reviews.length > 0 ?
+									<>
+										<h3 style={{ margin: "1em" }}>{reviews.length} Reviews</h3>
+										{
+											reviews.map((review, i) => (
+												<Review key={i} index={i} {...review} />
+											))
+										}
+									</>
+								:
+									<h3>Be the first to add a review!</h3>
+							}
+						</div>
 					</Container>
 				:
 				<Container>

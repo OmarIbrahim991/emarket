@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 import {
 	LOAD_INITIAL_DATA, SET_LOADING_STATE, SET_ERROR_STATE, ADD_TO_CART,
-	TOGGLE_LIKE_PRODUCT, SET_SEARCH, ADD_ORDER, LOG_USER
+	TOGGLE_LIKE_PRODUCT, SET_SEARCH, ADD_ORDER, LOG_USER, ADD_REVIEW
 } from './actions'
 
 
@@ -10,6 +10,8 @@ export const StateContext = createContext()
 export const initialState = { products: [], categories: [], cart: {}, orders: [], search: "", user: "user", loading: false, error: false }
 
 export const reducer = (state=initialState, action={ type: "NOOP", payload: {} }) => {
+	let updatedProducts = []
+
 	switch (action.type) {
 		case LOAD_INITIAL_DATA:
 			const { products, categories, } = action.payload
@@ -21,7 +23,7 @@ export const reducer = (state=initialState, action={ type: "NOOP", payload: {} }
 			const { error } = action.payload
 			return { ...state, error, }
 		case TOGGLE_LIKE_PRODUCT:
-			const updatedProducts = state.products.map(product => {
+			updatedProducts = state.products.map(product => {
 				if (product.id !== action.payload.id) return product
 				return {
 					...product,
@@ -50,9 +52,18 @@ export const reducer = (state=initialState, action={ type: "NOOP", payload: {} }
 			}
 		case LOG_USER:
 			const { user } = action.payload
+			return { ...state, user, }
+		case ADD_REVIEW:
+			updatedProducts = state.products.map((product) => {
+				if (product.id === action.payload.id) {
+					product.reviews = product.reviews || []
+					product.reviews.unshift(action.payload.review)
+				}
+				return product
+			})
 			return {
 				...state,
-				user,
+				products: updatedProducts,
 			}
 		default:
 			return state
