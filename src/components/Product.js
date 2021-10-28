@@ -6,18 +6,24 @@ import { StateContext } from '../state'
 import { toggleLikeProduct } from '../actions'
 import AddToCartButton from './AddToCartButton'
 import Rating from './Rating'
+import DefaultImage from '../img/placeholder.png'
 
 const Product = ({ id }) => {
 	const { state, dispatch } = useContext(StateContext)
 	const index = useMemo(() => state.products.findIndex(p => p.id === id), [id, state.products])
 	const { title, image, price, liked, rating } = index >= 0 ? state.products[index] : {}
 
+	const handleImgError = ({ target }) => {
+		target.onerror = null
+		target.src = DefaultImage
+	}
+
 	const toggleLike = () => dispatch(toggleLikeProduct(id))
 
 	return (
 		<Card className="product">
 			<Link to={`/products/${id}`} style={{ textDecoration: 'none', color: "inherit" }}>
-				<Card.Img className="product-image" variant="top" src={image} />
+				<Card.Img className="product-image" variant="top" src={image} onError={handleImgError} />
 				<Card.Body>
 					<Card.Title style={{ fontWeight: "bolder" }}>{title}</Card.Title>
 					<Rating rating={Math.round(rating.rate*2)/2} />

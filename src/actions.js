@@ -7,6 +7,7 @@ export const SET_SEARCH = "SET_SEARCH"
 export const ADD_ORDER = "ADD_ORDER"
 export const LOG_USER = "LOG_USER"
 export const ADD_REVIEW = "ADD_REVIEW"
+export const ADD_PRODUCT = "ADD_PRODUCT"
 
 export const setLoadingState = (loadingState) => ({
 	type: SET_LOADING_STATE,
@@ -59,4 +60,9 @@ export const logout = () => ({
 export const addReview = ({ id, review }) => ({
 	type: ADD_REVIEW,
 	payload: { id, review },
+})
+
+export const addProduct = (product) => ({
+	type: ADD_PRODUCT,
+	payload: { product },
 })

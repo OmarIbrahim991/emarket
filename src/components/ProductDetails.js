@@ -1,7 +1,7 @@
 import { useContext, useMemo, useEffect } from 'react'
 import { Container, Image, Carousel, Badge, Spinner } from 'react-bootstrap'
 import { useParams, Link } from 'react-router-dom'
-import { FaHeart, FaRegHeart } from 'react-icons/fa'
+import { FaHeart, FaRegHeart, FaFacebookSquare, FaTwitterSquare, FaInstagramSquare, FaSnapchatSquare, FaWhatsappSquare } from 'react-icons/fa'
 import { StateContext } from '../state'
 import { get } from '../utils/mockAPI'
 import { toggleLikeProduct, loadInitialData } from '../actions'
@@ -10,12 +10,18 @@ import NavHeader from './NavHeader'
 import Rating from './Rating'
 import ReviewForm from './ReviewForm'
 import Review from './Review'
+import DefaultImage from '../img/placeholder.png'
 
 const ProductDetails = () => {
 	const { state, dispatch } = useContext(StateContext)
 	const { productId } = useParams()
 	const index = useMemo(() => state.products.findIndex(p => p.id === parseInt(productId)), [productId, state.products])
 	const { id, title, image, price, liked, category, description, rating, reviews, } = index >= 0 ? state.products[index] : {}
+
+	const handleImgError = ({ target }) => {
+		target.onerror = null
+		target.src = DefaultImage
+	}
 
 	const toggleLike = () => dispatch(toggleLikeProduct(id))
 
@@ -37,15 +43,23 @@ const ProductDetails = () => {
 			{
 				index >= 0 ?
 					<Container style={{ color: "white" }}>
-						<Image src={image} thumbnail style={{ maxWidth: "90vw", maxHeight: "75vh", margin: "1em" }} />
+						<Image src={image} thumbnail style={{ maxWidth: "90vw", maxHeight: "75vh", margin: "1em" }} onError={handleImgError} />
 						<h3>{title} ({price}$)</h3>
 						<Rating rating={Math.round(rating.rate*2)/2} />
-						<p>{description}</p>
-						<div className="product-footer" style={{ backgroundColor: "black" }}>
+						<p style={{ fontSize: "110%", margin: "0.5em 0 1em" }}>{description}</p>
+						<hr />
+						<h4>Share on:</h4>
+						<div style={{ backgroundColor: "#fff", margin: "auto", display: "flex", justifyContent: "center", gap: 20, width: 300 }}>
+							<FaFacebookSquare className="clickable" size={40} fill="blue" />
+							<FaTwitterSquare className="clickable" size={40} fill="cyan" />
+							<FaInstagramSquare className="clickable" size={40} fill="purple" />
+							<FaSnapchatSquare className="clickable" size={40} fill="#de0" />
+							<FaWhatsappSquare className="clickable" size={40} fill="green" />
+						</div>
+						<div className="product-footer" style={{ backgroundColor: "black", margin: "1em" }}>
 							<span className="clickable" style={{ padding: 0 }}>
 								{liked ? <FaHeart size={70} color="red" onClick={toggleLike} /> : <FaRegHeart size={60} onClick={toggleLike} />}
 							</span>
-
 							<AddToCartButton id={id} large={true} />
 						</div>
 						<Container style={{ margin: "2em" }}>
@@ -68,6 +82,7 @@ const ProductDetails = () => {
 							</Carousel>
 						</Container>
 						<hr />
+						<h3>Reviews</h3>
 						<ReviewForm id={id} />
 						<hr />
 						<div>
@@ -87,9 +102,9 @@ const ProductDetails = () => {
 						</div>
 					</Container>
 				:
-				<Container>
-					<Spinner animation="border" variant="dark" style={{ marginTop: "10%" }} />
-				</Container>
+					<Container>
+						<Spinner animation="border" variant="dark" style={{ marginTop: "10%" }} />
+					</Container>
 			}
 
 		</>

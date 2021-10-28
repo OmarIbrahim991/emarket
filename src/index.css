@@ -47,8 +47,8 @@ svg {
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	border: 5px solid rgb(33, 37, 41);
-	box-shadow: 0.3em 0.6em 1em 0.2em gray;
+	border: 5px solid #fff;
+	box-shadow: 0.3em 0.6em 1em 0.2em rgb(103, 11, 131);
 	border-radius: 0.5em;
 	margin: 1em 1em;
 	padding: 1em;

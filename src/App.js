@@ -10,6 +10,8 @@ import Cart from './components/Cart'
 import Favorites from './components/Favorites'
 import Orders from './components/Orders'
 import Login from './components/Login'
+import Payment from './components/Payment'
+import ProductForm from './components/ProductForm'
 
 const App = () => {
 	const [state, dispatch] = useReducer(reducer, initialState)
@@ -50,6 +52,12 @@ const App = () => {
 					</Route>
 					<Route path="/orders">
 						<Orders />
+					</Route>
+					<Route path="/payment">
+						<Payment />
+					</Route>
+					<Route path="/product-form">
+						<ProductForm />
 					</Route>
 				</Switch>
 			</HashRouter>

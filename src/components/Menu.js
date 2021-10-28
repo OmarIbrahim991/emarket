@@ -9,6 +9,11 @@ const Menu = () => {
 	const { dispatch } = useContext(StateContext)
 	const history = useHistory()
 
+	const handleLogout = () => {
+		history.push("/")
+		dispatch(logout())
+	}
+
 	return (
 		<Dropdown>
 			<Dropdown.Toggle variant="dark">
@@ -18,8 +23,9 @@ const Menu = () => {
 				<Dropdown.Item onClick={() => history.push("/cart")}>Cart</Dropdown.Item>
 				<Dropdown.Item onClick={() => history.push("/orders")}>My Orders</Dropdown.Item>
 				<Dropdown.Item onClick={() => history.push("/favorites")}>My Favorites</Dropdown.Item>
+				<Dropdown.Item onClick={() => history.push("/product-form")}>Sell Products</Dropdown.Item>
 				<Dropdown.Divider />
-				<Dropdown.Item onClick={() => dispatch(logout())}>Logout</Dropdown.Item>
+				<Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
 			</Dropdown.Menu>
 		</Dropdown>
 	)
