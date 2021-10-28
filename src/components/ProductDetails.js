@@ -87,9 +87,9 @@ const ProductDetails = () => {
 						</div>
 					</Container>
 				:
-				<Container>
-					<Spinner animation="border" variant="dark" style={{ marginTop: "10%" }} />
-				</Container>
+					<Container>
+						<Spinner animation="border" variant="dark" style={{ marginTop: "10%" }} />
+					</Container>
 			}
 
 		</>
