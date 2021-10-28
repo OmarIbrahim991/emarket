@@ -10,6 +10,7 @@ import Cart from './components/Cart'
 import Favorites from './components/Favorites'
 import Orders from './components/Orders'
 import Login from './components/Login'
+import Payment from './components/Payment'
 
 const App = () => {
 	const [state, dispatch] = useReducer(reducer, initialState)
@@ -50,6 +51,9 @@ const App = () => {
 					</Route>
 					<Route path="/orders">
 						<Orders />
+					</Route>
+					<Route path="/payment">
+						<Payment />
 					</Route>
 				</Switch>
 			</BrowserRouter>

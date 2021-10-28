@@ -1,9 +1,9 @@
 import { useContext, useMemo, useState } from 'react'
 import { Container, Row, Col, Table, Image, Button, Modal } from 'react-bootstrap'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { FaTrash } from 'react-icons/fa'
 import { StateContext } from '../state'
-import { addToCart, addOrder } from '../actions'
+import { addToCart } from '../actions'
 import NavHeader from './NavHeader'
 import getOrderData from '../utils/getOrderData'
 import AddToCartButton from './AddToCartButton'
@@ -19,11 +19,6 @@ const Cart = () => {
 	const handleRemove = (id) => {
 		dispatch(addToCart({ id, count: 0 }))
 		setShow(false)
-	}
-
-	const placeOrder = () => {
-		dispatch(addOrder({ orderItems, total }))
-		history.push("/")
 	}
 
 	if (!orderItems || orderItems.length === 0) {
@@ -75,7 +70,9 @@ const Cart = () => {
 						<Button variant="danger" size="lg" onClick={() => history.push("/")}>Cancel</Button>
 					</Col>
 					<Col>
-						<Button variant="success" size="lg" onClick={placeOrder}>Proceed ({total}$)</Button>
+						<Link to={{ pathname: "/payment", state: { total, orderItems } }} style={{ textDecoration: 'none', color: "inherit" }}>
+							<Button variant="success" size="lg">Proceed ({total}$)</Button>
+						</Link>
 					</Col>
 				</Row>
 			</Container>
