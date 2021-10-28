@@ -10,7 +10,6 @@ import NavHeader from './NavHeader'
 const Payment = () => {
 	const { dispatch } = useContext(StateContext)
 	const { state } = useLocation()
-	console.log(state)
 	const { orderItems, total } = state ?? {}
 	const [selectedMethod, setSelectedMethod] = useState("paypal")
 	const history = useHistory()
